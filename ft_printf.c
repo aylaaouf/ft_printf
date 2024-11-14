@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 01:19:15 by aylaaouf          #+#    #+#             */
-/*   Updated: 2024/11/14 06:54:00 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2024/11/14 07:04:05 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int ft_printf(const char *s, ...)
                 count += ft_putunsigned(va_arg(args, unsigned int));
             else if (s[i] == 'x')
                 count += ft_puthex(va_arg(args, unsigned int), 0);
+            else if (s[i] == 'X')
+                count += ft_puthex(va_arg(args, unsigned int), 1);
+            else if (s[i] == '%')
+                count += ft_putchar('%');
         }
         else
         {
