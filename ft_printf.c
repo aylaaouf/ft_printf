@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 01:19:15 by aylaaouf          #+#    #+#             */
-/*   Updated: 2024/11/14 09:52:21 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:57:19 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int ft_printf(const char *s, ...)
         if (s[i] == '%')
         {
             i++;
-            if (!s[i])
-                break;
             if (s[i] == 'c')
                 count += ft_putchar(va_arg(args, int));
             else if (s[i] == 's')
