@@ -6,12 +6,12 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 01:12:53 by aylaaouf          #+#    #+#             */
-/*   Updated: 2024/11/14 09:50:16 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:07:21 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef FT_PRINTF_H
+#define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <unistd.h>
