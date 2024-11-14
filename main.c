@@ -6,67 +6,63 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 04:18:25 by aylaaouf          #+#    #+#             */
-/*   Updated: 2024/11/14 10:28:18 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:57:39 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putstr(char *str)
 {
-    return (write(1, &c, 1));
+	int	i;
+	int	count;
+
+	if (!str)
+		return (ft_putstr("(null)"));
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		count += write(1, &str[i], 1);
+		i++;
+	}
+	return (count);
 }
 
-int ft_putstr(char *str)
+int	ft_puthex(unsigned long n, int cases)
 {
-    int i;
-    int count;
-    if (!str)
-        return ft_putstr("(null)");
-    i = 0;
-    count = 0;
-    while(str[i])
-    {
-        count += write(1, &str[i], 1);
-        i++;
-    }
-    return (count);
+	char	*hex;
+	int		count;
+
+	count = 0;
+	if (cases == 0)
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	if (n >= 16)
+		count += ft_puthex(n / 16, cases);
+	count += ft_putchar(hex[n % 16]);
+	return (count);
 }
 
-int ft_puthex(unsigned long n, int cases)
+int	ft_putptr(void *ptr)
 {
-    char *hex;
-    int count;
+	int	count;
 
-    count = 0;
-    if (cases == 0)
-        hex = "0123456789abcdef";
-    else
-        hex = "0123456789ABCDEF";
-    if (n >= 16)
-        count += ft_puthex(n / 16, cases);
-    count += ft_putchar(hex[n % 16]);
-    return (count);
-}
-
-int ft_putptr(void *ptr)
-{
-    int count;
-
-    count = 0;
-    count += ft_putstr("0x");
-    count += ft_puthex((unsigned long)ptr, 0);
-    return (count);
+	count = 0;
+	count += ft_putstr("0x");
+	count += ft_puthex((unsigned long)ptr, 0);
+	return (count);
 }
 
 int	ft_putnbr(int n)
 {
-    int count;
+	int	count;
 
-    count = 0;
+	count = 0;
 	if (n == -2147483648)
 	{
-        return (ft_putstr("-2147483648"));
+		return (ft_putstr("-2147483648"));
 	}
 	if (n < 0)
 	{
@@ -82,22 +78,22 @@ int	ft_putnbr(int n)
 		count += ft_putnbr(n / 10);
 		count += ft_putchar((n % 10) + '0');
 	}
-    return (count);
+	return (count);
 }
 
-int ft_putunsigned(unsigned int n)
+int	ft_putunsigned(unsigned int n)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (n < 10)
-    {
-        count += ft_putchar(n + '0');
-    }
-    else
-    {
-        count += ft_putunsigned(n / 10);
-        count += ft_putchar((n % 10) + '0');
-    }
-    return (count);
+	count = 0;
+	if (n < 10)
+	{
+		count += ft_putchar(n + '0');
+	}
+	else
+	{
+		count += ft_putunsigned(n / 10);
+		count += ft_putchar((n % 10) + '0');
+	}
+	return (count);
 }
