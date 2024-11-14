@@ -6,11 +6,11 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 04:18:25 by aylaaouf          #+#    #+#             */
-/*   Updated: 2024/11/14 06:50:06 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:23:21 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "ft_printf.h"
 
 int ft_putchar(char c)
 {
@@ -21,7 +21,8 @@ int ft_putstr(char *str)
 {
     int i;
     int count;
-
+    if (!str)
+        return ft_putstr("(null)");
     i = 0;
     count = 0;
     while(str[i])
