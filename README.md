@@ -17,12 +17,6 @@
   - **%X**: Hexadecimal integer (uppercase)
   - **%%**: Percent sign
 
-- Handles the following flags:
-  - **-**: Left alignment
-  - **0**: Zero padding
-  - **.**: Precision for integers and strings
-  - **width**: Minimum field width
-
 ## Getting Started
 
 ### Prerequisites
